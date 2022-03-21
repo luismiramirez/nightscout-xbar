@@ -19,9 +19,9 @@ MY_DOMAIN = 'jane-doe'
 `MY_TOKEN` must contain the token for the role with read access to the API. Check [here](https://nightscout.github.io/nightscout/security/#create-a-token)
 the Nightscout docs on how to create an access token.
 
-### Coming soon
+`UNIT` has `mg/dl` as default. Change it to `mmol/L` if that's the unit you have configured in your Nightscout site.
 
-- Support for mmol units
+### Coming soon
 
 - Support for Nightscout sites outside of Heroku.
 

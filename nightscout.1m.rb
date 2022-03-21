@@ -14,6 +14,7 @@ require 'uri'
 # Edit these values with yours
 DOMAIN = 'your-nightscout-domain'
 TOKEN = 'your-token'
+UNIT = 'mg/dl'
 
 NIGHTSCOUT_URI = URI(
   "https://#{DOMAIN}.herokuapp.com/api/v3/entries/history?token=#{TOKEN}&limit=2"
@@ -75,6 +76,6 @@ response = request_data
 values = parse_values(JSON[response.body]['result'])
 delta = calculate_delta(values[:previous], values[:current])
 
-puts "🩸 #{values[:current]} #{values[:direction]} #{delta} mg/dl"
+puts "🩸 #{values[:current]} #{values[:direction]} #{delta} #{UNIT}"
 puts '---'
 puts "Your Nightscout site | href=https://#{NIGHTSCOUT_URI.host}"
