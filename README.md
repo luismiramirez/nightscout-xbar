@@ -9,21 +9,21 @@ It's inspired on [NightscoutBitBar](https://github.com/jhaydraude/NightscoutBitB
 To make it work with your Nightscout site, you'll have to edit the `nightscout.1m.rb` file before
 moving it to the xbar plugins directory and change the lines 15 and 16 with your own data.
 
-`MY_DOMAIN` must be changed to your Nightscout site name. If your Nightscout url is:
+`SITE` must be changed to your Nightscout site name. If your Nightscout url is:
 `https://jane-doe.herokuapp.com/` it should look like this:
 
 ```ruby
-MY_DOMAIN = 'jane-doe'
+SITE = 'https://jane-doe.herokuapp.com/'
 ```
 
-`MY_TOKEN` must contain the token for the role with read access to the API. Check [here](https://nightscout.github.io/nightscout/security/#create-a-token)
+Don't forget the slash at the end of the URL or the plugin won't work!
+
+`TOKEN` must contain the token for the role with read access to the API. Check [here](https://nightscout.github.io/nightscout/security/#create-a-token)
 the Nightscout docs on how to create an access token.
 
 `UNIT` has `mg/dl` as default. Change it to `mmol/L` if that's the unit you have configured in your Nightscout site.
 
 ### Coming soon
-
-- Support for Nightscout sites outside of Heroku.
 
 - Different emojis based on user configurable limits.
 

@@ -12,12 +12,12 @@ require 'net/https'
 require 'uri'
 
 # Edit these values with yours
-DOMAIN = 'your-nightscout-domain'
+SITE = 'https://your-nightscout-site.example/'
 TOKEN = 'your-token'
 UNIT = 'mg/dl'
 
 NIGHTSCOUT_URI = URI(
-  "https://#{DOMAIN}.herokuapp.com/api/v3/entries/history?token=#{TOKEN}&limit=2"
+  "#{SITE}/api/v3/entries/history?token=#{TOKEN}&limit=2"
 ).freeze
 TEN_MINUTES_AGO = Time.now.utc - 600
 
@@ -78,4 +78,4 @@ delta = calculate_delta(values[:previous], values[:current])
 
 puts "🩸 #{values[:current]} #{values[:direction]} #{delta} #{UNIT}"
 puts '---'
-puts "Your Nightscout site | href=https://#{NIGHTSCOUT_URI.host}"
+puts "Your Nightscout site | href=#{SITE}"
