@@ -39,7 +39,7 @@ def parse_values(parsed_response)
   {
     previous: parsed_response.first['sgv'],
     current: parsed_response.last['sgv'],
-    direction: determine_direction(parsed_response.last['direction'])
+    direction: direction_map.fetch(parsed_response.last['direction'], '')
   }
 end
 
@@ -51,25 +51,17 @@ def calculate_delta(previous, current)
   "#{operator} #{delta.abs}"
 end
 
-def determine_direction(nightscout_direction)
-  case nightscout_direction
-  when 'FortyFiveUp'
-    '↗'
-  when 'FortyFiveDown'
-    '↘'
-  when 'SingleUp'
-    '↑'
-  when 'SingleDown'
-    '↓'
-  when 'Flat'
-    '→'
-  when 'DoubleUp'
-    '⇈'
-  when 'DoubleDown'
-    '⇊'
-  else
-    nightscout_direction
-  end
+def direction_map
+  {
+    'FortyFiveUp' => '↗',
+    'FortyFiveDown' => '↘',
+    'SingleUp' => '↑',
+    'SingleDown' => '↓',
+    'Flat' => '→',
+    'DoubleUp' => '⇈',
+    'DoubleDown' => '⇊',
+    'NotComputable' => '-'
+  }
 end
 
 response = request_data
