@@ -15,6 +15,20 @@ require 'uri'
 SITE = 'https://your-nightscout-site.example/'
 TOKEN = 'your-token'
 UNIT = 'mg/dl'
+LIMITS = {
+  'mg/dl' => {
+    very_high: 260,
+    high: 180,
+    low: 70,
+    very_low: 55
+  },
+  'mmol/L' => {
+    very_high: 14.4,
+    high: 10,
+    low: 3.9,
+    very_low: 3.1
+  }
+}
 
 NIGHTSCOUT_URI = URI(
   "#{SITE}/api/v3/entries/history?token=#{TOKEN}&limit=2"
@@ -67,10 +81,23 @@ def direction_map
   }
 end
 
+def determine_icon(current_value)
+  limits_by_unit = LIMITS[UNIT]
+
+  if current_value >= limits_by_unit[:very_high] || current_value <= limits_by_unit[:very_low]
+    '🚨'
+  elsif current_value >= limits_by_unit[:high] || current_value <= limits_by_unit[:low]
+    '⚠️'
+  else
+    '👍'
+  end
+end
+
 response = request_data
 values = parse_values(JSON[response.body]['result'])
 delta = calculate_delta(values[:previous], values[:current])
+icon = determine_icon(values[:current])
 
-puts "🩸 #{values[:current]} #{values[:direction]} #{delta} #{UNIT}"
+puts [icon, values[:current], values[:direction], delta, UNIT].join(' ')
 puts '---'
 puts "Your Nightscout site | href=#{SITE}"

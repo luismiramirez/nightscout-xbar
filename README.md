@@ -2,12 +2,18 @@
 
 ![Preview](Preview.png)
 
-This is an [xbar](https://xbarapp.com/) plugin to show your BG levels in your OSX menu bar.
+This is an [xbar](https://xbarapp.com/) plugin to show your BG levels in the OSX menu bar.
 
 It's inspired on [NightscoutBitBar](https://github.com/jhaydraude/NightscoutBitBar/).
 
-To make it work with your Nightscout site, you'll have to edit the `nightscout.1m.rb` file before
-moving it to the xbar plugins directory and change the lines 15 and 16 with your own data.
+## Usage
+
+You must edit the `nighscout.1m.rb` file to set up your configuration values. See the Configuration
+section below for extended information.
+
+After you've setup the config vars, move the `nightscout.1m.rb` file into your xbar plugin folder.
+
+## Configuration
 
 `SITE` must be changed to your Nightscout site name. If your Nightscout url is:
 `https://jane-doe.herokuapp.com/` it should look like this:
@@ -23,8 +29,9 @@ the Nightscout docs on how to create an access token.
 
 `UNIT` has `mg/dl` as default. Change it to `mmol/L` if that's the unit you have configured in your Nightscout site.
 
-### Coming soon
+Limits are inside the `LIMITS` variable. They're setup with the default Nightscout limits for mg/dl and mmol/L.
+You can of course edit the values in case you need it.
 
-- Different emojis based on user configurable limits.
+### Coming soon
 
 - Sound alerts (if supported by xbar)
