@@ -25,6 +25,9 @@ def request_data
   req = Net::HTTP::Get.new(NIGHTSCOUT_URI.request_uri)
   req['Last-Modified'] = TEN_MINUTES_AGO
   http_client.request(req)
+rescue
+  puts 'Error connecting to Nightscout'
+  exit 0
 end
 
 def http_client
