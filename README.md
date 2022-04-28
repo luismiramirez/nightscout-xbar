@@ -1,4 +1,4 @@
-# Xbar plugin for Nightscout
+# XBar plugin for Nightscout
 
 ![Preview](Preview.png)
 
