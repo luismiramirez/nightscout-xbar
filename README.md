@@ -35,3 +35,4 @@ You can of course edit the values in case you need it.
 ### Coming soon
 
 - Sound alerts (if supported by xbar)
+- Get limits directly from NightScout
